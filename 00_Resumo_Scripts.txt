@@ -1,0 +1,74 @@
+
+# 📄 Documentação dos Scripts SQL – Projeto Menuzio
+
+---
+
+## 1. `schema.sql` – Estrutura do Banco
+
+Este script cria toda a estrutura do banco de dados `menuzio_bd`, com as tabelas e relacionamentos principais do sistema Menuzio:
+
+### Tabelas Criadas:
+- `cliente`: cadastro de clientes
+- `usuario`: funcionários/admins do sistema
+- `produto`: itens do cardápio (ex: pizzas, bebidas)
+- `estoque`: controle de quantidade dos produtos
+- `pedido`: pedidos realizados por clientes
+- `item_pedido`: itens individuais de cada pedido
+
+### Características:
+- Chaves primárias `AUTO_INCREMENT`
+- Chaves estrangeiras com `ON DELETE CASCADE` onde necessário
+- Tipos ENUM para campos como `status` e `tipo`
+
+---
+
+## 2. `seed_dados_exemplo.sql` – Inserção de Dados Básicos
+
+Este script insere dados mínimos para testes automáticos, usando `SELECT ... WHERE NOT EXISTS` para evitar duplicatas.
+
+### Dados incluídos:
+- Cliente de exemplo: João da Silva
+- Usuário admin com e-mail e senha padrão
+- Produtos como Pizza Calabresa e Suco de Laranja
+- Estoque de 20 unidades para cada produto
+
+### Função:
+Permite testar as transações e consultas sem precisar inserir tudo manualmente.
+
+---
+
+## 3. `02_Consultas_DQL.sql` – Consultas de Leitura
+
+Contém 5 consultas SQL para análise de dados do sistema:
+
+1. **Total de pedidos por cliente**  
+2. **Produtos da categoria 'Pizza'**  
+3. **Produtos com estoque abaixo de 10 unidades**  
+4. **Total monetário por pedido**  
+5. **Top 3 produtos mais vendidos**
+
+As consultas utilizam `JOIN`, `GROUP BY`, `ORDER BY` e funções agregadas como `SUM` e `COUNT`.
+
+---
+
+## 4. `03_Transacoes_DTL.sql` – Transações com Controle
+
+Script que simula 3 transações reais com `START TRANSACTION`, `SAVEPOINT`, `COMMIT` e `ROLLBACK`:
+
+1. **Criação de um pedido completo**, com inserção de itens e atualização do estoque.
+2. **Cancelamento de pedido**, com restauração de estoque e remoção segura do pedido.
+3. **Reposição manual de estoque**, com rollback opcional para simulação de erro.
+
+### Objetivo:
+Demonstrar segurança e consistência nas alterações do banco, respeitando integridade relacional.
+
+---
+
+## Observação Final
+
+Esses 4 arquivos funcionam em conjunto:
+- Primeiro, roda-se o `schema.sql` para estruturar
+- Depois, o `seed_dados_exemplo.sql` para popular
+- Em seguida, usa-se `Consultas_DQL` para ler
+- E `Transacoes_DTL` para simular uso real e controle de erros
+

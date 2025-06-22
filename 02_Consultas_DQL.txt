@@ -1,0 +1,25 @@
+
+Consulta 01 – Total de pedidos por cliente
+- Objetivo: mostrar quantos pedidos cada cliente fez.
+- Tabelas: cliente, pedido.
+- Resultado esperado: id do cliente, nome e total de pedidos.
+
+Consulta 02 – Produtos do tipo 'Pizza'
+- Objetivo: listar produtos que pertencem à categoria 'Pizza'.
+- Tabelas: produto.
+- Resultado esperado: id, nome, descrição e preço dos produtos do tipo pizza.
+
+Consulta 03 – Produtos com estoque baixo
+- Objetivo: detectar produtos com menos de 5 unidades em estoque.
+- Tabelas: produto, estoque.
+- Resultado esperado: nome do produto e quantidade atual.
+
+Consulta 04 – Total de cada pedido
+- Objetivo: calcular o valor total de cada pedido.
+- Tabelas: pedido, cliente, item_pedido.
+- Resultado esperado: id do pedido, nome do cliente, valor total.
+
+Consulta 05 – Top 3 produtos mais vendidos
+- Objetivo: descobrir quais produtos têm maior quantidade vendida.
+- Tabelas: item_pedido, produto.
+- Resultado esperado: nome do produto e total vendido, ordenado por vendas.

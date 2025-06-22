@@ -1,0 +1,13 @@
+
+Transação 01 – Efetuar Pedido
+- Fluxo: cria pedido, insere item, reduz estoque, finaliza pedido.
+- Savepoint: antes de inserir itens. Em caso de falha no estoque, desfaz itens.
+- Finalização com COMMIT se tudo der certo.
+
+Transação 02 – Cancelar Pedido
+- Fluxo: restaura estoque, deleta itens e pedido.
+- Savepoint antes de apagar dados. Se falhar, usa ROLLBACK TO sp_cancelar.
+
+Transação 03 – Reposição de Estoque
+- Fluxo: aumenta quantidade de estoque.
+- Savepoint antes da atualização. ROLLBACK parcial se nova quantidade for inválida.
